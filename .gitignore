@@ -37,4 +37,5 @@ Icon?
 ehthumbs.db
 Thumbs.db
 
+target/*
 nbactions.xml

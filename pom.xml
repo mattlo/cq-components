@@ -1,0 +1,79 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+		 xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<groupId>com.github.mattlo</groupId>
+	<artifactId>cq-components</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+	<packaging>jar</packaging>
+
+	<name>cq-components</name>
+	<url>https://github.com/mattlo/cq-components.git</url>
+
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>com.day.jcr.vault</groupId>
+				<artifactId>content-package-maven-plugin</artifactId>
+				<version>0.0.16</version>
+				<configuration>
+					<name>${project.artifactId}</name>
+					<failOnError>true</failOnError>
+					<filterSource>src/main/content/META-INF/vault/filter.xml</filterSource>
+					<builtContentDirectory>src/main/content/jcr_root</builtContentDirectory>
+
+					<packageFile>target/${project.artifactId}.zip</packageFile>
+					<targetURL>${crx_url}/crx/packmgr/service.jsp</targetURL>
+
+					<verbose>true</verbose>
+				</configuration>
+				<executions>
+					<execution>
+						<goals>
+							<goal>package</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+		</plugins>
+	</build>
+
+	<properties>
+		<releaseRepository-Id>adobe-public-releases</releaseRepository-Id>
+		<releaseRepository-Name>Adobe Public Releases</releaseRepository-Name>
+		<releaseRepository-URL>http://repo.adobe.com/nexus/content/groups/public</releaseRepository-URL>
+
+		<crx_url>http://localhost:4502</crx_url>
+		<crx_user>admin</crx_user>
+		<crx_password>admin</crx_password>
+	</properties>
+	<repositories>
+		<repository>
+			<id>adobe-public-releases</id>
+			<name>Adobe Basel Public Repository</name>
+			<url>http://repo.adobe.com/nexus/content/groups/public</url>
+			<releases>
+				<enabled>true</enabled>
+				<updatePolicy>never</updatePolicy>
+			</releases>
+			<snapshots>
+				<enabled>false</enabled>
+			</snapshots>
+		</repository>
+	</repositories>
+	<pluginRepositories>
+		<pluginRepository>
+			<id>adobe-public-releases</id>
+			<name>Adobe Basel Public Repository</name>
+			<url>http://repo.adobe.com/nexus/content/groups/public</url>
+			<releases>
+				<enabled>true</enabled>
+				<updatePolicy>never</updatePolicy>
+			</releases>
+			<snapshots>
+				<enabled>false</enabled>
+			</snapshots>
+		</pluginRepository>
+	</pluginRepositories>
+</project>

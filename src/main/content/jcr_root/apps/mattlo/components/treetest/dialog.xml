@@ -9,12 +9,14 @@
 			<items jcr:primaryType="cq:WidgetCollection">
 				<tab1
 					jcr:primaryType="cq:Widget"
-					title="Settings"
+					title="Settingsrrrr"
 					xtype="panel">
 					<items jcr:primaryType="cq:WidgetCollection">
 						<tree
-							jcr:primaryType="cq:Panel"
-							xtype="treetest" />
+							jcr:primaryType="cq:Widget"
+							name="./treetest"
+							treeRootPath="/content"
+							xtype="pagemapper" />
 					</items>
 				</tab1>
 			</items>
